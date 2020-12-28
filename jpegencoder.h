@@ -32,6 +32,7 @@ typedef enum quality_rate {
         lowest,
         lower,
         low,
+        high,
         higher,
         highest
 } quality_rate;

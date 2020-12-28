@@ -101,6 +101,8 @@ int main(int argc, char** argv) {
         data.quality = lower;
     } else if (strcmp(quality, "lowest") == 0) {
         data.quality = lowest;
+    } else if (strcmp(quality, "high") == 0) {
+        data.quality = high;
     } else if (strcmp(quality, "higher") == 0) {
         data.quality = higher;
     } else if (strcmp(quality, "highest") == 0) {

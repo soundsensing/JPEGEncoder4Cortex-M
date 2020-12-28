@@ -98,6 +98,20 @@ static const uint8_t std_luminance_quant_tbl_50[] = {
  * Standard quantization table For luminance (sorted by zigzag_tbl).
  * Quality rate is "90".
  */
+static const uint8_t std_luminance_quant_tbl_90_2x[] = {
+    2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x01, 
+    2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x01, 2*0x02, 2*0x04, 
+    2*0x02, 2*0x02, 2*0x02, 2*0x02, 2*0x02, 2*0x04, 2*0x03, 2*0x03, 
+    2*0x02, 2*0x04, 2*0x05, 2*0x05, 2*0x06, 2*0x06, 2*0x05, 2*0x05, 
+    2*0x05, 2*0x05, 2*0x06, 2*0x07, 2*0x09, 2*0x07, 2*0x06, 2*0x06, 
+    2*0x08, 2*0x06, 2*0x05, 2*0x05, 2*0x08, 2*0x0A, 2*0x08, 2*0x08, 
+    2*0x09, 2*0x09, 2*0x0A, 2*0x0A, 2*0x0A, 2*0x06, 2*0x07, 2*0x0B, 
+    2*0x0C, 2*0x0B, 2*0x0A, 2*0x0C, 2*0x09, 2*0x0A, 2*0x0A, 2*0x09
+};
+/**
+ * Standard quantization table For luminance (sorted by zigzag_tbl).
+ * Quality rate is "90".
+ */
 static const uint8_t std_luminance_quant_tbl_90[] = {
     0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 
     0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x04, 
@@ -486,12 +500,15 @@ typedef struct quant_tbl {
     const uint8_t *luminance_quant_tbl;
     const uint8_t *chrominance_quant_tbl;
 } quant_tbl;
+
 static const quant_tbl quant_tbl_0 = {std_luminance_quant_tbl_0, std_chrominance_quant_tbl_0};
 static const quant_tbl quant_tbl_10 = {std_luminance_quant_tbl_10, std_chrominance_quant_tbl_10};
 static const quant_tbl quant_tbl_50 = {std_luminance_quant_tbl_50, std_chrominance_quant_tbl_50};
+static const quant_tbl quant_tbl_90_2x = { std_luminance_quant_tbl_90_2x, std_chrominance_quant_tbl_90 };
 static const quant_tbl quant_tbl_90 = {std_luminance_quant_tbl_90, std_chrominance_quant_tbl_90};
 static const quant_tbl quant_tbl_95 = {std_luminance_quant_tbl_95, std_chrominance_quant_tbl_95};
 static const quant_tbl quant_tbl_100 = {std_luminance_quant_tbl_100, std_chrominance_quant_tbl_100};
+
 static const quant_tbl* get_quality_tbl(quality_rate quality) {
     switch(quality) {
         case lowest:
@@ -500,6 +517,8 @@ static const quant_tbl* get_quality_tbl(quality_rate quality) {
             return &quant_tbl_10;
         case low:
             return &quant_tbl_50;
+        case high:
+            return &quant_tbl_90_2x;
         case higher:
             return &quant_tbl_95;
         case highest:
