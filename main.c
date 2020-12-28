@@ -95,10 +95,16 @@ int main(int argc, char** argv) {
 
     if (strcmp(quality, "normal") == 0) {
         data.quality = normal;
-    } else if (strcmp(quality, "highest") == 0) {
-        data.quality = highest;
+    } else if (strcmp(quality, "low") == 0) {
+        data.quality = low;
+    } else if (strcmp(quality, "lower") == 0) {
+        data.quality = lower;
+    } else if (strcmp(quality, "lowest") == 0) {
+        data.quality = lowest;
     } else if (strcmp(quality, "higher") == 0) {
         data.quality = higher;
+    } else if (strcmp(quality, "highest") == 0) {
+        data.quality = highest;
     } else {
         fprintf(stderr, "Error: Unknown format '%s' \n", format);
         return -1;
