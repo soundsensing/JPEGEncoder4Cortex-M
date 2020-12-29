@@ -500,14 +500,15 @@ typedef struct quant_tbl {
     const uint8_t *luminance_quant_tbl;
     const uint8_t *chrominance_quant_tbl;
 } quant_tbl;
-
 static const quant_tbl quant_tbl_0 = {std_luminance_quant_tbl_0, std_chrominance_quant_tbl_0};
 static const quant_tbl quant_tbl_10 = {std_luminance_quant_tbl_10, std_chrominance_quant_tbl_10};
+static const quant_tbl quant_tbl_20 = {std_luminance_quant_tbl_20, std_chrominance_quant_tbl_20};
 static const quant_tbl quant_tbl_50 = {std_luminance_quant_tbl_50, std_chrominance_quant_tbl_50};
 static const quant_tbl quant_tbl_90_2x = { std_luminance_quant_tbl_90_2x, std_chrominance_quant_tbl_90 };
 static const quant_tbl quant_tbl_90 = {std_luminance_quant_tbl_90, std_chrominance_quant_tbl_90};
 static const quant_tbl quant_tbl_95 = {std_luminance_quant_tbl_95, std_chrominance_quant_tbl_95};
 static const quant_tbl quant_tbl_100 = {std_luminance_quant_tbl_100, std_chrominance_quant_tbl_100};
+
 
 static const quant_tbl* get_quality_tbl(quality_rate quality) {
     switch(quality) {
@@ -515,6 +516,8 @@ static const quant_tbl* get_quality_tbl(quality_rate quality) {
             return &quant_tbl_0;
         case lower:
             return &quant_tbl_10;
+        case low20:
+            return &quant_tbl_20;
         case low:
             return &quant_tbl_50;
         case high:

@@ -31,6 +31,7 @@ typedef enum quality_rate {
         normal,
         lowest,
         lower,
+        low20,
         low,
         high,
         higher,
