@@ -27,16 +27,7 @@
 #define JPEG_BUF_SIZE JPEG_HEADER_SIZE_FULL_COLOR
 
 
-typedef enum quality_rate {
-        normal,
-        lowest,
-        lower,
-        low20,
-        low,
-        high,
-        higher,
-        highest
-} quality_rate;
+#include "jpeg4c.h"
 
 typedef enum color_type {
         YUV411,
@@ -56,7 +47,7 @@ typedef struct jpeg_data {
     int mcu_width_max;
     int mcu_height_max;
     color_info c_info;
-    quality_rate quality;
+    jpeg4c_quality_rate quality;
     
     uint8_t ret_data[JPEG_BUF_SIZE];
     int data_len; 

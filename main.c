@@ -94,19 +94,19 @@ int main(int argc, char** argv) {
     }
 
     if (strcmp(quality, "normal") == 0) {
-        data.quality = normal;
+        data.quality = jpeg4c_quality_normal;
     } else if (strcmp(quality, "low") == 0) {
-        data.quality = low;
+        data.quality = jpeg4c_quality_low;
     } else if (strcmp(quality, "lower") == 0) {
-        data.quality = lower;
+        data.quality = jpeg4c_quality_lower;
     } else if (strcmp(quality, "lowest") == 0) {
-        data.quality = lowest;
+        data.quality = jpeg4c_quality_lowest;
     } else if (strcmp(quality, "high") == 0) {
-        data.quality = high;
+        data.quality = jpeg4c_quality_high;
     } else if (strcmp(quality, "higher") == 0) {
-        data.quality = higher;
+        data.quality = jpeg4c_quality_higher;
     } else if (strcmp(quality, "highest") == 0) {
-        data.quality = highest;
+        data.quality = jpeg4c_quality_highest;
     } else {
         fprintf(stderr, "Error: Unknown format '%s' \n", format);
         return -1;

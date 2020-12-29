@@ -510,23 +510,23 @@ static const quant_tbl quant_tbl_95 = {std_luminance_quant_tbl_95, std_chrominan
 static const quant_tbl quant_tbl_100 = {std_luminance_quant_tbl_100, std_chrominance_quant_tbl_100};
 
 
-static const quant_tbl* get_quality_tbl(quality_rate quality) {
+static const quant_tbl* get_quality_tbl(jpeg4c_quality_rate quality) {
     switch(quality) {
-        case lowest:
+        case jpeg4c_quality_lowest:
             return &quant_tbl_0;
-        case lower:
+        case jpeg4c_quality_lower:
             return &quant_tbl_10;
-        case low20:
+        case jpeg4c_quality_low20:
             return &quant_tbl_20;
-        case low:
+        case jpeg4c_quality_low:
             return &quant_tbl_50;
-        case high:
+        case jpeg4c_quality_high:
             return &quant_tbl_90_2x;
-        case higher:
+        case jpeg4c_quality_higher:
             return &quant_tbl_95;
-        case highest:
+        case jpeg4c_quality_highest:
             return &quant_tbl_100;
-        case normal:
+        case jpeg4c_quality_normal:
         default:
             return &quant_tbl_90;
     }    
@@ -537,7 +537,7 @@ static const quant_tbl* get_quality_tbl(quality_rate quality) {
 static int split_MCU(jpeg_data *data, const uint8_t *mcu);
 static int encode_block_mode(jpeg_data *data, const uint8_t *block, const block_mode mode);
 static int dct(int *block, int *temp);
-static int quantization(int *block, const block_mode mode, const quality_rate quality);
+static int quantization(int *block, const block_mode mode, const jpeg4c_quality_rate quality);
 static int coding_huff(jpeg_data *data, const int *block, const int pre_DC,
                     const uint8_t *dc_huff_len_tbl, const int16_t *dc_huff_code_tbl, 
                     const uint8_t *ac_huff_len_tbl, const int16_t *ac_huff_code_tbl);
@@ -972,7 +972,7 @@ static int dct(int *block, int *work){
  * @param quality Quality of quantization.
  * @return success(1) or error(Under 0)
  */
-static int quantization(int *block, const block_mode mode, const quality_rate quality){
+static int quantization(int *block, const block_mode mode, const jpeg4c_quality_rate quality){
 	int ret = 1;
     const uint8_t *qt;
     const quant_tbl *qt_tbl;
