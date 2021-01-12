@@ -35,7 +35,7 @@ typedef enum {
 
 str2int_errno str2int(int *out, char *s, int base) {
     char *end;
-    if (s[0] == '\0' || isspace(s[0]))
+    if (s[0] == '\0' || isspace((int)s[0]))
         return STR2INT_INCONVERTIBLE;
     errno = 0;
     long l = strtol(s, &end, base);
