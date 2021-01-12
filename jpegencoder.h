@@ -18,7 +18,7 @@
 
 #include "jpegDef.h"
 
-#define BLOCK_SIZE 8
+#define JPEG4C_BLOCK_SIZE 8
 #define MCU_SIZE_GRAY 8
 #define MCU_SIZE_COLOR 16
 
@@ -62,12 +62,12 @@ typedef struct jpeg_data {
     int pre_DC_Cr;
     
     struct {
-        uint8_t block_y[BLOCK_SIZE*BLOCK_SIZE];
-        uint8_t block_Cr[BLOCK_SIZE*BLOCK_SIZE];
-        uint8_t block_Cb[BLOCK_SIZE*BLOCK_SIZE];
-        int block_int[BLOCK_SIZE*BLOCK_SIZE];
+        uint8_t block_y[JPEG4C_BLOCK_SIZE*JPEG4C_BLOCK_SIZE];
+        uint8_t block_Cr[JPEG4C_BLOCK_SIZE*JPEG4C_BLOCK_SIZE];
+        uint8_t block_Cb[JPEG4C_BLOCK_SIZE*JPEG4C_BLOCK_SIZE];
+        int block_int[JPEG4C_BLOCK_SIZE*JPEG4C_BLOCK_SIZE];
         uint8_t mcu[MCU_SIZE_COLOR*MCU_SIZE_COLOR];
-        int temp[BLOCK_SIZE*BLOCK_SIZE];
+        int temp[JPEG4C_BLOCK_SIZE*JPEG4C_BLOCK_SIZE];
     }work;
 } jpeg_data ;
 

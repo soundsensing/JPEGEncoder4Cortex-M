@@ -19,7 +19,8 @@
 
 #include "jpegencoder.h"
 
-#define QUANT_SIZE BLOCK_SIZE*BLOCK_SIZE
+#define BLOCK_SIZE JPEG4C_BLOCK_SIZE
+#define QUANT_SIZE JPEG4C_BLOCK_SIZE*JPEG4C_BLOCK_SIZE
 
 /**
  ISO/IEC 10918 ITU-T Recommendation T.81 Appendix:K
